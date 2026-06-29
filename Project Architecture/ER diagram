@@ -22,7 +22,6 @@ The primary entities include **Users**, **Stocks**, **Portfolios**, **Transactio
 * **Market Data** provides pricing information for all listed stocks.
 
 ## Purpose
-
 The ER diagram models real-world stock trading relationships in a virtual environment. It enables users to practice buying and selling stocks, monitor portfolio performance, analyze trading strategies, and gain practical investment experience without financial risk.
 
 By organizing the relationships between users, portfolios, stocks, transactions, and market data, the ER diagram ensures efficient data management, maintains data integrity, and supports a scalable architecture for the SB Stocks paper trading platform.
