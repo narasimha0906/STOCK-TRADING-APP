@@ -1,1 +1,176 @@
+# 🚀 Development and Explanation
 
+## 📁 Config
+
+### db.js
+- Establishes the connection between the application and the MongoDB database.
+- Configures Mongoose connection settings.
+- Handles successful and failed database connections.
+- Exports the database connection for use throughout the application.
+
+---
+
+## 📁 Controllers
+
+### userController.js
+- Handles user registration.
+- Authenticates user login.
+- Manages user profile information.
+- Validates user credentials.
+- Returns authentication responses.
+
+### stockController.js
+- Retrieves stock market data.
+- Fetches stock details by symbol.
+- Provides real-time stock prices.
+- Returns historical stock information.
+- Handles stock search functionality.
+
+### transactionController.js
+- Executes buy transactions.
+- Executes sell transactions.
+- Records transaction history.
+- Updates user portfolios.
+- Calculates transaction details.
+
+### portfolioController.js
+- Creates virtual portfolios.
+- Displays portfolio information.
+- Updates portfolio holdings.
+- Calculates portfolio value.
+- Tracks profit and loss.
+
+---
+
+## 📁 Middlewares
+
+### authMiddleware.js
+- Verifies JWT authentication tokens.
+- Protects secured API routes.
+- Authorizes authenticated users.
+- Prevents unauthorized access.
+
+---
+
+## 📁 Models
+
+### userModel.js
+- Defines the User schema.
+- Stores user information.
+- Maintains login credentials.
+- Stores virtual balance.
+
+### stockSchema.js
+- Defines the Stock schema.
+- Stores company information.
+- Stores stock prices.
+- Stores historical market data.
+
+### transactionModel.js
+- Defines the Transaction schema.
+- Stores buy/sell records.
+- Maintains transaction history.
+- Links users with stocks.
+
+### portfolioModel.js
+- Defines the Portfolio schema.
+- Stores portfolio holdings.
+- Calculates portfolio performance.
+- Tracks investment value.
+
+---
+
+## 📁 Routes
+
+### userRoute.js
+- Handles user authentication APIs.
+- Maps registration requests.
+- Maps login requests.
+- Manages profile APIs.
+
+### stockRoute.js
+- Provides stock-related API endpoints.
+- Retrieves stock listings.
+- Fetches stock details.
+- Returns historical stock data.
+
+### transactionRoute.js
+- Handles buy transactions.
+- Handles sell transactions.
+- Returns transaction history.
+
+### portfolioRoute.js
+- Creates portfolios.
+- Retrieves portfolio details.
+- Updates portfolio information.
+- Deletes portfolios.
+
+---
+
+## 📁 Root Files
+
+### index.js
+- Main entry point of the application.
+- Initializes the Express server.
+- Connects the MongoDB database.
+- Loads middleware.
+- Registers all API routes.
+- Starts the server.
+
+### package.json
+- Stores project information.
+- Lists project dependencies.
+- Contains npm scripts.
+- Maintains application metadata.
+
+### package-lock.json
+- Locks dependency versions.
+- Ensures consistent installations across environments.
+
+### Schemas.js
+- Centralizes schema exports.
+- Organizes database models.
+- Simplifies model imports throughout the application.
+
+---
+
+# 📂 Backend Folder Structure
+
+```
+Backend/
+│
+├── config/
+│   └── db.js
+│
+├── controllers/
+│   ├── userController.js
+│   ├── stockController.js
+│   ├── transactionController.js
+│   └── portfolioController.js
+│
+├── middlewares/
+│   └── authMiddleware.js
+│
+├── models/
+│   ├── userModel.js
+│   ├── stockSchema.js
+│   ├── transactionModel.js
+│   └── portfolioModel.js
+│
+├── routes/
+│   ├── userRoute.js
+│   ├── stockRoute.js
+│   ├── transactionRoute.js
+│   └── portfolioRoute.js
+│
+├── index.js
+├── package.json
+├── package-lock.json
+└── Schemas.js
+```
+
+---
+
+# 📌 Backend Summary
+
+The backend of **SB Stocks** is developed using **Node.js**, **Express.js**, **MongoDB**, and **Mongoose** following the **MVC (Model-View-Controller)** architecture. The project is organized into Config, Controllers, Middlewares, Models, Routes, and Root Files, where each component performs a dedicated responsibility. This modular architecture improves code readability, maintainability, scalability, testing, and future development while supporting secure authentication, paper trading, portfolio management, and real-time stock market operations.
