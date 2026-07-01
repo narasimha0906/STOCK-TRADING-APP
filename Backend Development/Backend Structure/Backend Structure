@@ -1,0 +1,336 @@
+# 🚀 Backend Structure – Development and Explanation
+
+## 📂 Config
+
+### db.js
+**Purpose:** Establishes the connection between the application and the MongoDB database.
+
+**Responsibilities:**
+- Connects to MongoDB using Mongoose.
+- Handles successful and failed database connections.
+- Exports the database connection for use throughout the application.
+- Ensures reliable communication with the database.
+
+---
+
+# 📂 Controllers
+
+### authController.js
+**Purpose:** Handles user authentication and account management.
+
+**Responsibilities:**
+- Register new users.
+- Authenticate user login.
+- Encrypt passwords before storing them.
+- Generate authentication tokens.
+- Retrieve user profile information.
+
+---
+
+### stockController.js
+**Purpose:** Manages stock-related operations.
+
+**Responsibilities:**
+- Fetch available US stock listings.
+- Retrieve real-time stock prices.
+- Display historical stock data.
+- Search stocks by company name or symbol.
+- Provide stock details for trading.
+
+---
+
+### portfolioController.js
+**Purpose:** Manages user portfolios.
+
+**Responsibilities:**
+- Create new portfolios.
+- Display portfolio holdings.
+- Update portfolio after stock purchases or sales.
+- Calculate portfolio value.
+- Track profit and loss.
+
+---
+
+### transactionController.js
+**Purpose:** Handles paper trading transactions.
+
+**Responsibilities:**
+- Execute buy transactions.
+- Execute sell transactions.
+- Store transaction history.
+- Validate stock quantity.
+- Update portfolio after every transaction.
+
+---
+
+### dashboardController.js
+**Purpose:** Provides dashboard analytics.
+
+**Responsibilities:**
+- Display portfolio summary.
+- Calculate total investment.
+- Show available virtual balance.
+- Display recent transactions.
+- Generate performance statistics.
+
+---
+
+# 📂 Middleware
+
+### authMiddleware.js
+**Purpose:** Protects secured API routes.
+
+**Responsibilities:**
+- Verify JWT authentication token.
+- Authorize logged-in users.
+- Prevent unauthorized access.
+- Validate user sessions.
+
+---
+
+### errorMiddleware.js
+**Purpose:** Handles application errors.
+
+**Responsibilities:**
+- Capture server errors.
+- Return meaningful error responses.
+- Improve debugging and logging.
+
+---
+
+# 📂 Models
+
+### userModel.js
+**Purpose:** Defines the database structure for users.
+
+**Fields Include:**
+- Name
+- Email
+- Password
+- Contact Number
+- Virtual Balance
+- Created Date
+
+---
+
+### stockModel.js
+**Purpose:** Stores stock-related information.
+
+**Fields Include:**
+- Stock Symbol
+- Company Name
+- Current Price
+- Market Sector
+- Historical Data
+
+---
+
+### portfolioModel.js
+**Purpose:** Defines the portfolio structure.
+
+**Fields Include:**
+- Portfolio Name
+- User ID
+- Stock Holdings
+- Total Investment
+- Current Value
+- Profit/Loss
+
+---
+
+### transactionModel.js
+**Purpose:** Stores all trading activities.
+
+**Fields Include:**
+- User ID
+- Portfolio ID
+- Stock Symbol
+- Transaction Type (Buy/Sell)
+- Quantity
+- Stock Price
+- Transaction Date
+
+---
+
+# 📂 Routes
+
+### authRoute.js
+**Purpose:** Handles authentication endpoints.
+
+**Endpoints**
+- POST /register
+- POST /login
+- GET /profile
+
+---
+
+### stockRoute.js
+**Purpose:** Manages stock-related APIs.
+
+**Endpoints**
+- GET /stocks
+- GET /stock/:symbol
+- GET /historical/:symbol
+
+---
+
+### portfolioRoute.js
+**Purpose:** Handles portfolio operations.
+
+**Endpoints**
+- POST /portfolio/create
+- GET /portfolio
+- PUT /portfolio/update
+- DELETE /portfolio/delete
+
+---
+
+### transactionRoute.js
+**Purpose:** Handles trading transactions.
+
+**Endpoints**
+- POST /buy
+- POST /sell
+- GET /transactions
+
+---
+
+### dashboardRoute.js
+**Purpose:** Provides dashboard information.
+
+**Endpoints**
+- GET /dashboard
+- GET /portfolio-summary
+- GET /performance
+
+---
+
+# 📂 Utilities
+
+### stockService.js
+**Purpose:** Connects with external stock market APIs.
+
+**Responsibilities:**
+- Fetch live stock prices.
+- Retrieve historical market data.
+- Process API responses.
+- Handle API errors.
+
+---
+
+# 📂 Root Files
+
+### server.js
+**Purpose:** Main server entry point.
+
+**Responsibilities:**
+- Creates Express server.
+- Connects MongoDB.
+- Loads middleware.
+- Registers API routes.
+- Starts the application.
+
+---
+
+### app.js
+**Purpose:** Configures the Express application.
+
+**Responsibilities:**
+- Configure middleware.
+- Enable CORS.
+- Parse JSON requests.
+- Handle routing.
+- Configure error handling.
+
+---
+
+### package.json
+**Purpose:** Contains project metadata.
+
+**Includes**
+- Project name
+- Dependencies
+- Development dependencies
+- npm scripts
+- Version information
+
+---
+
+### package-lock.json
+**Purpose:** Maintains exact dependency versions.
+
+**Responsibilities**
+- Locks installed package versions.
+- Ensures consistent installation.
+- Improves dependency management.
+
+---
+
+### .env
+**Purpose:** Stores environment variables securely.
+
+**Contains**
+- MongoDB Connection URL
+- JWT Secret
+- Stock API Key
+- Server Port
+
+---
+
+# 📂 Backend Folder Structure
+
+```
+backend/
+│
+├── config/
+│   └── db.js
+│
+├── controllers/
+│   ├── authController.js
+│   ├── stockController.js
+│   ├── portfolioController.js
+│   ├── transactionController.js
+│   └── dashboardController.js
+│
+├── middleware/
+│   ├── authMiddleware.js
+│   └── errorMiddleware.js
+│
+├── models/
+│   ├── userModel.js
+│   ├── stockModel.js
+│   ├── portfolioModel.js
+│   └── transactionModel.js
+│
+├── routes/
+│   ├── authRoute.js
+│   ├── stockRoute.js
+│   ├── portfolioRoute.js
+│   ├── transactionRoute.js
+│   └── dashboardRoute.js
+│
+├── services/
+│   └── stockService.js
+│
+├── app.js
+├── server.js
+├── package.json
+├── package-lock.json
+└── .env
+```
+
+---
+
+# 📌 Backend Summary
+
+The backend of **SB Stocks** is built using **Node.js**, **Express.js**, and **MongoDB**, following the **MVC (Model–View–Controller)** architecture. Each component has a clearly defined responsibility:
+
+- **Config** manages the database connection.
+- **Controllers** implement business logic and process requests.
+- **Middleware** handles authentication, authorization, and error management.
+- **Models** define MongoDB schemas and data relationships.
+- **Routes** expose RESTful API endpoints to the frontend.
+- **Services** integrate external stock market APIs.
+- **Root files** initialize the server, configure the application, and manage dependencies.
+
+This modular architecture ensures that the application is secure, scalable, maintainable, and easy to extend with future features such as watchlists, notifications, and advanced analytics.
